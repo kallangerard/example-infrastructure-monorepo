@@ -7,3 +7,12 @@ provider "postgresql" {
   sslmode         = "require"
   connect_timeout = 15
 }
+
+terraform {
+  required_providers {
+    postgresql = {
+      source  = "cyrilgdn/postgresql"
+      version = "~> 1.17"
+    }
+  }
+}
