@@ -1,7 +1,7 @@
 /environments/uat-*/ @kallangerard 
 /environments/prod-*/ @kallangerard
 /*-stack/ @kallangerard
-/.github/
+/.github/ @kallangerard
 
 # Beta stack versions have no owner, therefore they do not need codeowner approval
 /*-stack/*_beta/
