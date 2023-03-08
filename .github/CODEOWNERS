@@ -1,0 +1,6 @@
+/environments/uat-*/ @acme-org/example-admins
+/environments/prod-*/ @acme-org/example-admins
+/*-stack/ @acme-org/example-admins
+
+# Beta stack versions have no owner, therefore they do not need codeowner approval
+/*-stack/*_beta/
