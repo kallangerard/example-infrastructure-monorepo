@@ -6,13 +6,13 @@
   {resource-type}.tf
   terraform.tf
 /environments/
-  /dev/
+  dev/
     main.tf
     compute.tf
     data.tf
     access.tf
     terraform.tf
-  /{uat|prod}-{compute|data|access}/
+  {uat|prod}-{compute|data|access}/
     main.tf
     {compute|data|access}.tf
     interface.tf
