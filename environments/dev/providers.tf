@@ -1,7 +1,7 @@
 provider "postgresql" {
 
-  host            = "localhost"
-  port            = 5432
+  host            = local.postgres_host
+  port            = local.postgres_port
   database        = "postgres"
   username        = "postgres"
   password        = "postgres"
