@@ -1,3 +1,1 @@
-module "data_stack" {
-  source = "../../data-stack/v1"
-}
+../linked/data.tf
