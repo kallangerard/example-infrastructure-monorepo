@@ -1,1 +1,0 @@
-../linked/compute.tf
