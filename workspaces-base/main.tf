@@ -10,5 +10,6 @@ data "tfe_organization" "this" {
 
 data "tfe_oauth_client" "github" {
   name             = "Terraform Cloud (kallangerard)"
+  organization     = data.tfe_organization.this.name
   service_provider = "github"
 }
