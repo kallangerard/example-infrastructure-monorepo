@@ -6,5 +6,10 @@ terraform {
   }
 }
 
-provider "tfe" {
+locals {
+  project_id = "prj-X27rr8hHEbgEwczb"
+}
+
+provider "tfe_organization" "this" {
+  name = "kallangerard"
 }

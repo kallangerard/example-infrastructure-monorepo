@@ -12,9 +12,10 @@ locals {
 
 resource "tfe_workspace" "this" {
   for_each          = local.workspace_config
-  organization      = "kallangerard"
+  organization      = data.tfe_organization.this.name
   name              = each.key
-  tag_names         = each.value.tags
+  tag_names         = lookup(each.value, "tags", null)
+  project_id        = local.project_id
   working_directory = "workspaces/${each.key}"
   trigger_patterns = [
     "workspaces/${each.key}/**/*",
