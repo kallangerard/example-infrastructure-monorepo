@@ -1,6 +1,6 @@
 tags:
-  - "environment:production"
+  - "environment:uat"
   - "project:acme"
   - "technical-domain:data"
   - "owner:kallangerard"
-auto_apply: false
+auto_apply: true
