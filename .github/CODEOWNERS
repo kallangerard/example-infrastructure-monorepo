@@ -1,5 +1,3 @@
-/environments/uat-*/ @kallangerard 
-/environments/prod-*/ @kallangerard
 /*-stack/ @kallangerard
 /.github/ @kallangerard
 
