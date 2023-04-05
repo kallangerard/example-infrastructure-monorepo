@@ -2,11 +2,11 @@ locals {
   workspace_yaml_files = fileset("../workspaces/", "*/workspace.yaml")
   workspace_yaml_config = {
     for file in local.workspace_yaml_files :
-    file => yamldecode(file(file))
+    file => yamldecode(file("../workspaces/${file}"))
   }
   workspace_config = {
     for file, config in local.workspace_yaml_config :
-    regex("^.*/(.*)/workspace.yaml$", file)[0] => config
+    regex("(.*)/workspace.yaml$", file)[0] => config
   }
 }
 
