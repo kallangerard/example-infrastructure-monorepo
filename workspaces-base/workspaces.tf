@@ -22,7 +22,8 @@ resource "tfe_workspace" "this" {
     "**/stack-v*/**/*"
   ]
   vcs_repo {
-    github_app_installation_id = var.github_app_installation_id
-    identifier                 = local.vcs_repo_identifier
+    oauth_token_id = data.tfe_oauth_client.github.oauth_token_id
+    identifier     = local.vcs_repo_identifier
   }
 }
+
