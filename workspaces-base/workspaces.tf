@@ -12,6 +12,7 @@ locals {
 
 resource "tfe_workspace" "this" {
   for_each          = local.workspace_config
+  organization      = "kallangerard"
   name              = each.key
   tag_names         = each.value.tags
   working_directory = "workspaces/${each.key}"
