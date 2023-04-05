@@ -13,7 +13,7 @@ locals {
 resource "tfe_workspace" "this" {
   for_each          = local.workspace_config
   name              = each.key
-  tags              = each.value.tags
+  tag_names         = each.value.tags
   working_directory = "workspaces/${each.key}"
   trigger_patterns = [
     "workspaces/${each.key}/**/*",
