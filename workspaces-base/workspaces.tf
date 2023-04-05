@@ -14,7 +14,7 @@ resource "tfe_workspace" "this" {
   for_each          = local.workspace_config
   organization      = data.tfe_organization.this.name
   name              = each.key
-  auto_apply        = lookup(each.value, "auto_apply", null) 
+  auto_apply        = lookup(each.value, "auto_apply", null)
   tag_names         = lookup(each.value, "tags", null)
   project_id        = local.project_id
   working_directory = "workspaces/${each.key}"
@@ -23,7 +23,7 @@ resource "tfe_workspace" "this" {
     "**/stack-v*/**/*"
   ]
   vcs_repo {
-    github_app_installation_id = local.github_app_installation_id
+    github_app_installation_id = data.tfe_github_app_installation.this.id
     identifier                 = local.vcs_repo_identifier
   }
 }
