@@ -22,8 +22,8 @@ resource "tfe_workspace" "this" {
     "workspaces/${each.key}/**/*",
     "**/stack-v*/**/*"
   ]
-  vcs_repo {
-    github_app_installation_id = var.github_app_installation_id
-    identifier                 = local.vcs_repo_identifier
-  }
+  # vcs_repo {
+  #   github_app_installation_id = var.github_app_installation_id
+  #   identifier                 = local.vcs_repo_identifier
+  # }
 }
