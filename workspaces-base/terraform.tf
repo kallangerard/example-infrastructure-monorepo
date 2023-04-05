@@ -9,4 +9,5 @@ terraform {
 
 
 provider "tfe" {
+  organization = "kallangerard"
 }
