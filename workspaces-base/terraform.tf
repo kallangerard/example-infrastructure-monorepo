@@ -7,12 +7,4 @@ terraform {
 }
 
 provider "tfe" {
-  hostname = "app.terraform.io"
-}
-
-terraform {
-  cloud {
-    organization = "kallangerard"
-    hostname     = "app.terraform.io"
-  }
 }
