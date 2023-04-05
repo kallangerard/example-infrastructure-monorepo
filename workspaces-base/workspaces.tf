@@ -14,6 +14,7 @@ resource "tfe_workspace" "this" {
   for_each          = local.workspace_config
   organization      = data.tfe_organization.this.name
   name              = each.key
+  auto_apply        = lookup(each.value, "auto_apply", null) 
   tag_names         = lookup(each.value, "tags", null)
   project_id        = local.project_id
   working_directory = "workspaces/${each.key}"
