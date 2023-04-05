@@ -23,7 +23,7 @@ resource "tfe_workspace" "this" {
     "**/stack-v*/**/*"
   ]
   vcs_repo {
-    github_app_installation_id = data.tfe_github_app_installation.this.id
+    github_app_installation_id = var.github_app_installation_id
     identifier                 = local.vcs_repo_identifier
   }
 }

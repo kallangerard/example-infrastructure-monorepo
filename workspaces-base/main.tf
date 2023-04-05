@@ -7,7 +7,3 @@ locals {
 data "tfe_organization" "this" {
   name = "kallangerard"
 }
-
-data "tfe_github_app_installation" "this" {
-  name = "Terraform Cloud"
-}
