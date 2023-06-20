@@ -1,0 +1,26 @@
+name: Provision Infrastructure
+on: {}
+
+env:
+  AWS_REGION: ap-southeast-2
+  AWS_ACCOUNT_ID: ""
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    environment:
+      name: aws-dev
+    permissions:
+      id-token: write
+      contents: read
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      # Assume the Role defined externally in AWS that allows oidc access
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: "arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/github-actions-oidc"
+          role-duration-seconds: 900 # 15 minutes
+          aws-region: ${{ env.AWS_REGION }}
+      - run: echo "Unimplemented" && exit 1
