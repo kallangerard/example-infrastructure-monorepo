@@ -1,6 +1,0 @@
-tags:
-  - "environment:development"
-  - "project:acme"
-  - "technical-domain:data"
-  - "owner:kallangerard"
-auto_apply: true
