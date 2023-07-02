@@ -1,0 +1,31 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tf_plan:
+    name: Terraform Speculative Plan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Teller
+        uses: spectralops/setup-teller@v1
+
+      - name: export environment
+        run: |
+          teller env >> $GITHUB_ENV
+          cat .env.ci >> $GITHUB_ENV
+
+      - name: Plan Development
+        env:
+          TF_ENV: development
+        run: |
+          make tf_plan
+
+      - name: Plan Production
+        env:
+          TF_ENV: production
+        run: |
+          make tf_plan

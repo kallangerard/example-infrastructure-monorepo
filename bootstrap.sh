@@ -6,7 +6,7 @@
 set -e -u -o pipefail
 
 bucket_policy=$(
-    jq . <<EOL
+  jq . <<EOL
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -31,25 +31,25 @@ EOL
 
 # Create S3 bucket for Terraform backend
 aws s3api create-bucket \
-    --bucket "$TF_BACKEND_S3_BUCKET_NAME" \
-    --object-ownership BucketOwnerEnforced \
-    --create-bucket-configuration LocationConstraint="$AWS_REGION"
+  --bucket "$TF_BACKEND_S3_BUCKET_NAME" \
+  --object-ownership BucketOwnerEnforced \
+  --create-bucket-configuration LocationConstraint="$AWS_REGION"
 
 # Enable versioning on the S3 bucket
 aws s3api put-bucket-versioning --bucket "$TF_BACKEND_S3_BUCKET_NAME" --versioning-configuration Status=Enabled
 
 # Create Bucket Policy for S3 Bucket
 aws s3api put-bucket-policy \
-    --bucket "$TF_BACKEND_S3_BUCKET_NAME" \
-    --policy "$bucket_policy"
+  --bucket "$TF_BACKEND_S3_BUCKET_NAME" \
+  --policy "$bucket_policy"
 
 # Create DynamoDB table for Terraform state locking
 aws dynamodb create-table \
-    --table-name "$TF_BACKEND_S3_DYNAMODB_TABLE_NAME" \
-    --attribute-definitions AttributeName=LockID,AttributeType=S \
-    --key-schema AttributeName=LockID,KeyType=HASH \
-    --billing-mode PAY_PER_REQUEST \
-    --region "$AWS_REGION"
+  --table-name "$TF_BACKEND_S3_DYNAMODB_TABLE_NAME" \
+  --attribute-definitions AttributeName=LockID,AttributeType=S \
+  --key-schema AttributeName=LockID,KeyType=HASH \
+  --billing-mode PAY_PER_REQUEST \
+  --region "$AWS_REGION"
 
 # TODO: Get Fingerprint
 # TODO: Confirm Script is correct
